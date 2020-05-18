@@ -3,7 +3,7 @@
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$username = $_POST['username'];
-		$password = $_POST['password'];
+		$password = ($_POST['password']);
 		$email = $_POST['email'];
 		$query = $conn->query("SELECT * FROM `admin` WHERE `username` = '$username'") or die(mysqli_error());
 		$valid = $query->num_rows;

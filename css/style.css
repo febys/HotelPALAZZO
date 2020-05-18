@@ -53,7 +53,7 @@ body {
 	background: pink;
 	text-align: left;
 	color: brown;
-	padding: 10px;
+  padding: 10px;
 }
 @import 'https://fonts.googleapis.com/css?family=Montserrat|Open+Sans';
 .navbar-brand {

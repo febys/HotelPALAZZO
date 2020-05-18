@@ -31,8 +31,8 @@ if (isset($_POST['reset-password'])) {
 
     // Send email to user with the token in a link they can click on
     $to = $email;
-    $subject = "Reset your password on examplesite.com";
-    $msg = "Hi there, click on this <a href=\"http://localhost/HotelWeb/admin/new_pass.php?token=" . $token . "\">link </a> to reset your password on our site";
+    $subject = "Reset your password on HotelPALAZZO.com";
+    $msg = "Hi there, click on this <a href=\"http://localhost/HotelPALAZZO/admin/new_pass.php?token=" . $token . "\">link </a> to reset your password on our site";
     $msg = wordwrap($msg,70);
     $headers = "From: napsterfly@gmail.com";
     mail($to, $subject, $msg, $headers);
@@ -53,7 +53,7 @@ if (isset($_POST['new_password'])) {
     // select email address of user from the password_reset table 
     $sql = "SELECT email FROM password_resets WHERE token='$token' LIMIT 1";
     $results = mysqli_query($db, $sql);
-    $email = mysqli_fetch_assoc($results)['email'];
+    $row= mysqli_fetch_assoc($results)['email'];
 
     if ($email) {
       $new_pass = md5($new_pass);

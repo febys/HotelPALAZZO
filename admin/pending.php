@@ -1,25 +1,3 @@
-<?php include('app_logic.php'); ?>
-<!DOCTYPE html>
-<?php require_once "connect.php"?>
-<html lang = "en">
-	<head>
-		<title>Hotel PALAZZO</title>
-		<meta charset = "utf-8" />
-		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
-		<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css " />
-		<link rel = "stylesheet" type = "text/css" href = "../css/style.css" />
-	</head>
-	<body style = "background-image: url('../images/bc2.png'); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; ">
-<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
-  <div class="container">
-		<div class="navbar-header">
-		<a href="./" class="navbar-brand">Hotel PALAZZO</a>
-		</div>
-</header>
-<br><br><br><br><br>
-<div class= "mainB">
-	<div class = "container">
-	
     <?php include('app_logic.php'); ?>
 <!DOCTYPE html>
 <?php require_once "connect.php"?>
