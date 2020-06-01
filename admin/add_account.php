@@ -49,15 +49,15 @@
 					<form method = "POST">
 						<div class = "form-group">
 							<label>Name </label>
-							<input type = "text" class = "form-control" name = "name"  required = "required"/>
+							<input type = "text" class = "form-control" name = "name"  required = "required" />
 						</div>
 						<div class = "form-group">
 							<label>Email </label>
-							<input type = "email" class = "form-control" name = "email" required = "required"  />
+							<input type = "email" class = "form-control" name = "email" required = "required" />
 						</div>
 						<div class = "form-group">
 							<label>Username </label>
-							<input type = "text" class = "form-control" name = "username" required = "required" />
+							<input type = "text" class = "form-control" name = "username"  required = "required"/>
 						</div>
 						<div class = "form-group">
 							<label>Password </label>

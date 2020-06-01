@@ -64,6 +64,10 @@
 							<input type = "text" class = "form-control" value = "<?php echo $fetch['username']?>" name = "username" required = "required" />
 						</div>
 						<div class = "form-group">
+							<label>Old Password </label>
+							<input type = "password" class = "form-control"  name = "oldpassword" required = "required" />
+						</div>
+						<div class = "form-group">
 							<label>Password </label>
 							<input type = "password" class = "form-control" value = "<?php echo $fetch['password']?>" name = "password" required = "required" />
 						</div>
