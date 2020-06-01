@@ -88,6 +88,10 @@ background-size: cover;
 							<button class = "btn btn-info form-control" name = "add_guest"><i class = "glyphicon glyphicon-save"></i> Submit</button>
 						</div>
 					</form>
+					<center><div class="paypal"">
+						<h5><b>You can pay with Cash or PayPal<b></h5>
+							<button  style ="background-color: #FFC439;border-radius: 5px;	border: none;cursor: pointer;width: 190px; padding: 10px 20px 7px 20px;" type="submit" name="paypal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></button>
+						</div></center>
 				</div>
 			</div>
 				<br style = "clear:both;" />

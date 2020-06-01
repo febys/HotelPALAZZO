@@ -59,7 +59,7 @@ background-size: cover;
 			<div style = "text-align:right; " class = "footer">
 		<label style="color:white;  margin: 12px; margin-right: 20px; ">&copy; Copyright: DEFSA </label>
 	</div>
-	</footer>
+</footer>
 </body>
 <script src = "js/jquery.js"></script>
 <script src = "js/bootstrap.js"></script>	
