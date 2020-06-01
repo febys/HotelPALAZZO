@@ -44,7 +44,7 @@
 				<hr >
 				<?php
 					require_once 'admin/connect.php';
-					$query = $conn->query("SELECT * FROM `room` WHERE `room_id` = '$_REQUEST[room_id]'") or die(mysql_error());
+					$query = $conn->query("SELECT * FROM `room` ORDER BY `price` ASC") or die(mysql_error());
 					while($fetch = $query->fetch_array()){
 				?>
 					<div class = "well" style = "height:300px; width:100%;border: 2px solid #DAA520;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 8px 20px 0 rgba(0, 0, 0, 0.19);">
