@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2017 at 04:32 AM
--- Server version: 10.1.24-MariaDB
--- PHP Version: 7.1.6
+-- Generation Time: Jun 02, 2020 at 01:14 AM
+-- Server version: 10.1.40-MariaDB
+-- PHP Version: 7.1.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,15 +32,17 @@ CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `username` varchar(24) NOT NULL,
-  `password` varchar(24) NOT NULL
+  `password` varchar(24) NOT NULL,
+  `email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `name`, `username`, `password`) VALUES
-(1, 'Administrator', 'Admin', 'admin');
+INSERT INTO `admin` (`admin_id`, `name`, `username`, `password`, `email`) VALUES
+(1, 'Administrator', 'admin', 'admin', 'febys.hoxha@fshnstudent.info'),
+(9, 'sonja', 'dhrth', 'user', 'sonj.mici@fshnstudent.info');
 
 -- --------------------------------------------------------
 
@@ -56,6 +58,51 @@ CREATE TABLE `guest` (
   `address` varchar(50) NOT NULL,
   `contactno` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `guest`
+--
+
+INSERT INTO `guest` (`guest_id`, `firstname`, `middlename`, `lastname`, `address`, `contactno`) VALUES
+(1, 'Febys', 'Hoxha', 'Hoxha', 'Ylli i Kuq', '5435834857');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `id` int(11) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`id`, `email`, `token`) VALUES
+(NULL, 'febys.hoxha@fshnstudent.info', 'b2c8eb2a4af42661a70392c8923a10005d438b783b588e26d3f0cb23274a7c1506666c20e956a9c23b6005b51c73cdc2b5e5'),
+(NULL, 'febys.hoxha@fshnstudent.info', '3d5a52343bd4ae301d5a20c4eea77c716027a70429ee431d809f9e1b1bf154d7b88464496d18a845328587e1a20c2fa4374f'),
+(NULL, 'febys.hoxha@fshnstudent.info', 'fa0653663c4f6fd8d379a82f8c00efc880d34a8abdb9da40d99657cdcd8210f5d44938aff8b5731b22d37059e5dfe3319aa6'),
+(NULL, 'febys.hoxha@fshnstudent.info', '3a3430efbf5040f109e1e8ca868a28d35f4bb83dd6951fffdafe3a6e86f2b6d6151229fa7450e99fd4cb92e0b2bcbd493a8e'),
+(NULL, 'febys.hoxha@fshnstudent.info', 'a08007442033e031d1b0c8d7f3c02b121a59d5d15572983cb25402b8d7de40b64a674a0d5f8f26a8174eafd4f14e0ca16edb');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(6) NOT NULL,
+  `txnid` varchar(20) NOT NULL,
+  `payment_amount` decimal(7,2) NOT NULL,
+  `payment_status` varchar(25) NOT NULL,
+  `itemid` varchar(25) NOT NULL,
+  `createdtime` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -77,9 +124,9 @@ CREATE TABLE `room` (
 INSERT INTO `room` (`room_id`, `room_type`, `price`, `photo`) VALUES
 (1, 'Standard', '79', '1.jpg'),
 (2, 'Superior', '99', '3.jpg'),
-(3, 'Super Deluxe', '139', '4.jpg'),
-(4, 'Jr. Suite', '179', '5.jpg'),
-(5, 'Executive Suite', '239', '6.jpg');
+(3, 'Super Deluxe', '129', '4.jpg'),
+(4, 'Jr. Suite', '169', '5.jpg'),
+(5, 'Executive Suite', '220', '6.jpg');
 
 -- --------------------------------------------------------
 
@@ -103,6 +150,16 @@ CREATE TABLE `transaction` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`transaction_id`, `guest_id`, `room_id`, `room_no`, `extra_bed`, `status`, `days`, `checkin`, `checkin_time`, `checkout`, `checkout_time`, `bill`) VALUES
+(1, 1, 3, 15, 0, 'Check Out', 2, '2020-05-04', '09:42:39', '2020-05-19', '09:43:27', '258'),
+(2, 2, 3, 0, 0, 'Pending', 0, '2020-05-19', '00:00:00', '0000-00-00', '00:00:00', ''),
+(3, 3, 3, 0, 0, 'Pending', 0, '2020-05-20', '00:00:00', '0000-00-00', '00:00:00', ''),
+(5, 5, 3, 0, 0, 'Pending', 0, '2020-06-02', '00:00:00', '0000-00-00', '00:00:00', '');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -117,6 +174,18 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `guest`
   ADD PRIMARY KEY (`guest_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD UNIQUE KEY `token` (`token`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `room`
@@ -138,22 +207,32 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `guest`
 --
 ALTER TABLE `guest`
-  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
   MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
