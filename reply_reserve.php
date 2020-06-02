@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
 	<head>
-		<title>Hotel Online Reservation</title>
+		<title>Hotel PALAZZO</title>
 		<meta charset = "utf-8" />
 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
 		<link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css " />
@@ -46,7 +46,29 @@ background-size: cover;
 					<center><h3>Please visit our Hotel for verification</h3></center>
 					<br />
 					<center><h4>THANK YOU!</h4></center>
+
 					<br />
+				
+					<center><div class="paypal"">
+						<h5><b>You can pay with Cash or PayPal<b></h5>
+						<form class="paypal" action="payments.php" method="post" id="paypal_form">
+							<input type="hidden" name="cmd" value="_xclick" />
+							<input type="hidden" name="no_note" value="1" />
+							<input type="hidden" name="lc" value="UK" />
+							<input
+								type="hidden"
+								name="bn"
+								value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest"
+							/>
+							<input type="hidden" name="first_name" value="Customer's First Name" />
+							<input type="hidden" name="last_name" value="Customer's Last Name" />
+							<input type="hidden" name="payer_email" value="customer@example.com" />
+							<input type="hidden" name="item_number" value="123456" />
+							<button  style ="background-color: #FFC439;border-radius: 5px;	border: none;cursor: pointer;width: 190px; padding: 10px 20px 7px 20px;" type="submit" name="paypal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></button>
+							</form>	
+						
+						</div></center>
+						<br>
 					<center><a href = "reservation.php" class = "btn btn-success"><i class = "glphyicon glyphicon-check"></i> Back to reservation</a></center>
 				</div>
 				<div class = "col-md-4"></div>
